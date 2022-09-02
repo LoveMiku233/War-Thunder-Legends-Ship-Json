@@ -15,7 +15,7 @@ Ship ship[100];
 int shipcnt = 0;
 
 void display(string str) {
-	MessageBox(NULL, "233", str.c_str(), MB_YESNO);
+	//MessageBox(NULL, "233", str.c_str(), MB_YESNO);
 }
 
 void printALLShipName() {
@@ -101,8 +101,8 @@ int main() {
 #ifndef PRINT
 	cout << "输出到data.txt" << endl;
 	wtFile();
-	wtFile.outShip()
+	//wtFile.outShip();
 #endif
-	display("导出结束!");
+	cout<<"导出结束！"<<endl;
 	return 0;
 }

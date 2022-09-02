@@ -37,6 +37,7 @@ bool wtFile::outShip(const Ship &ship) {
 	if (!file_is_open) {
 		return false;
 	}
+	/*
 	//船数据
 	fout1 	<< "舰船生命值: " << ship.shipDurability << std::endl
 	        << "船员总数(可能复制粘贴的): " << ship.crewTotalCount << std::endl
@@ -53,5 +54,6 @@ bool wtFile::outShip(const Ship &ship) {
 	      << "伤害: " << weapon.damage << std::endl
 	      << "备弹: " << weapon.ammoCount << std::endl
 	      << "此武器数量: " << weapon.gunsCount << std::endl << std::endl;
+	*/
 	return true;
 }
