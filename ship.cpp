@@ -37,23 +37,25 @@ bool wtFile::outShip(const Ship &ship) {
 	if (!file_is_open) {
 		return false;
 	}
-	/*
-	//船数据
-	fout1 	<< "舰船生命值: " << ship.shipDurability << std::endl
-	        << "船员总数(可能复制粘贴的): " << ship.crewTotalCount << std::endl
-	        << "最大速度: " << ship.maxSpeed << std::endl
-	        << "回转时间: " << ship.turningTime << "s" << std::endl
-	        << "支援飞机: "  << ship.supportPlane << endl
-	        << "支援飞机个数: " << ship.supportPlaneCount << "架" << endl;
-	//武器数据
-	fout1 << "武器名称: " << gunName(weapon.name) << std::endl
-	      << "口径: " << weapon.caliber << std::endl
-	      << "类型: " << weapon.wtype << std::endl
-	      << "射击频率: " << weapon.shotFreq << std::endl
-	      << "自动瞄准最大区(AA和鱼雷): " << weapon.aimMaxDist << std::endl
-	      << "伤害: " << weapon.damage << std::endl
-	      << "备弹: " << weapon.ammoCount << std::endl
-	      << "此武器数量: " << weapon.gunsCount << std::endl << std::endl;
-	*/
+		//fout << "***********************************************************" << endl;
+		fout1 << "舰船名称: " << ship.name << endl;
+		int wpcnt = 0;
+		fout1 << "舰船生命值: " << ship.var.shipDurability<< std::endl
+		          << "船员总数(可能复制粘贴的): " << ship.var.crewTotalCount << std::endl
+		          << "最大速度: " << ship.var.maxSpeed << std::endl
+		          << "回转时间: " << ship.var.turningTime << "s" << std::endl
+		          << "支援飞机: " << ship.var.supportPlane << endl
+		          << "支援飞机个数: " << ship.var.supportPlaneCount << "架" << endl;
+		while (ship.weapons[wpcnt].name.compare("null")) {
+			fout1 << "武器名称: " << gunName(ship.weapons[wpcnt].name) << std::endl
+		          << "口径: " << ship.weapons[wpcnt].caliber << std::endl
+		          << "类型: " << ship.weapons[wpcnt].wtype << std::endl
+		          << "射击频率: " << ship.weapons[wpcnt].shotFreq << std::endl
+		          << "自动瞄准最大区(AA和鱼雷): " << ship.weapons[wpcnt].aimMaxDist << std::endl
+		          << "伤害: " << ship.weapons[wpcnt].damage << std::endl
+		          << "备弹: " << ship.weapons[wpcnt].ammoCount << std::endl
+		          << "此武器数量: " << ship.weapons[wpcnt].gunsCount << std::endl << std::endl;
+			wpcnt++;
+		}
 	return true;
 }

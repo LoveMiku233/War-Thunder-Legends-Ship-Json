@@ -21,7 +21,7 @@ void display(string str) {
 void printALLShipName() {
 	for (int i = 0; i < shipcnt; i++) {
 		//fout << "***********************************************************" << endl;
-		//fout << "舰船名称: " << ship[i].name << endl;
+		//fout << "????????: " << ship[i].name << endl;
 		ship[i].var.printfShip(); //
 		int wpcnt = 0;
 		while (ship[i].weapons[wpcnt].name.compare("null")) {
@@ -44,12 +44,12 @@ void readFileJson() {
 	if (reader.parse(in, root)) {
 		Json::Value::Members mem = root.getMemberNames();
 		for (auto i = mem.begin(); i != mem.end(); i++) {
-			//舰船处理
+			//????????
 			if (!root[*i]["type"].asString().compare("ship")) {
-				//名字处理
+				//???????
 				Ship temp;
 				temp.name = *i;
-				//舰船数据处理
+				//???????????
 				//fout << temp.name << endl;
 				temp.var.crewTotalCount = root[*i]["shipDurability"].asInt();
 				temp.var.maxSpeed = root[*i]["Shop"]["maxSpeed"].asFloat();
@@ -60,7 +60,7 @@ void readFileJson() {
 					temp.var.supportPlaneCount = root[*i]["Shop"]["supportPlaneCount"].asInt();
 				}
 				//ship[shipcnt]=temp;
-				//武器数据处理
+				//???????????
 				int wpcnt = 0;
 				Json::Value::Members wp = root[*i]["Shop"]["weapons"].getMemberNames();
 				for (auto j = wp.begin(); j != wp.end(); j++) {
@@ -77,7 +77,7 @@ void readFileJson() {
 					if (wptype.compare("aaa")) {
 						wptemp.aimMaxDist = wproot["aimMaxDist"].asFloat();
 					} else if (wptype.compare("torpedo")) {
-						//todo 鱼雷
+						//todo ????
 						wptemp.aimMaxDist = wproot["aimMaxDist"].asFloat();
 					}
 					temp.weapons[wpcnt++] = wptemp;
@@ -93,16 +93,20 @@ int main() {
 	mapInit();
 
 	cout << "LoveMiku233 导出" << endl;
-	cout << "目前手游52艘船,数据大部分我都已经导出" << endl;
-	cout << "有大佬知道船的具体名称吗？可以私信告诉我" << endl;
+	cout << "显示手游海战解包并且导出" << endl;
+	cout << "test" << endl;
 	readFileJson();
-	printALLShipName();
+	//printALLShipName();
 	//fout.close();
 #ifndef PRINT
-	cout << "输出到data.txt" << endl;
-	wtFile();
+	cout << "导出到data.txt" << endl;
+	wtFile file;
+	for (int i = 0; i < shipcnt; i++) {
+		file.outShip(ship[i]);
+	}
+	
 	//wtFile.outShip();
 #endif
-	cout<<"导出结束！"<<endl;
+	cout<<"导出结束!"<<endl;
 	return 0;
 }

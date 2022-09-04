@@ -126,7 +126,7 @@ static struct NAME{
 	{ussr_destroyer_pr56_spokoinyy,""},
 	{ussr_sub_pr613,""},
 	{ussr_sub_type_k,""}
-}
+};
 
 
 
